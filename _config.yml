@@ -1,6 +1,8 @@
 theme: minima
 title: AIChapters
 description: Learn AI and Machine Learning through structured courses
+baseurl: "/aichapters"
+url: "https://sher11.github.io"
 
 # Collections
 collections:

@@ -16,7 +16,7 @@ Learn Artificial Intelligence and Machine Learning through structured, chapter-b
     <div class="course-card">
       <h3>{{ course.title }}</h3>
       <p>{{ course.description }}</p>
-      <a href="{{ course.url }}">Start Course &rarr;</a>
+      <a href="{{ site.baseurl }}{{ course.url }}">Start Course &rarr;</a>
     </div>
   {% endfor %}
 </div>
