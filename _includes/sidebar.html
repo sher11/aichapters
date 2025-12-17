@@ -1,0 +1,33 @@
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <h2><a href="/">{{ site.title }}</a></h2>
+    <p>{{ site.description }}</p>
+  </div>
+
+  <div class="sidebar-content">
+    <h3>Courses</h3>
+
+    {% assign course_dirs = site.pages | where_exp: "page", "page.path contains 'courses/'" | where_exp: "page", "page.name == 'index.md'" | sort: "title" %}
+
+    {% for course_page in course_dirs %}
+      <div class="course-section">
+        <h4><a href="{{ course_page.url }}">{{ course_page.title }}</a></h4>
+
+        {% assign course_id = course_page.course_id %}
+        {% assign chapters = site.pages | where_exp: "page", "page.course_id == course_id" | where_exp: "page", "page.chapter_number != nil" | sort: "chapter_number" %}
+
+        {% if chapters.size > 0 %}
+          <ul class="chapter-list">
+            {% for chapter in chapters %}
+              <li>
+                <a href="{{ chapter.url }}" {% if page.url == chapter.url %}class="active"{% endif %}>
+                  {{ chapter.title }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</nav>

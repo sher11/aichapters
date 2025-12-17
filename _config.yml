@@ -1,3 +1,16 @@
 theme: minima
 title: AIChapters
-description: A simple GitHub Pages site
+description: Learn AI and Machine Learning through structured courses
+
+# Collections
+collections:
+  courses:
+    output: true
+    permalink: /courses/:path/
+
+# Defaults
+defaults:
+  - scope:
+      path: "courses"
+    values:
+      layout: "chapter"

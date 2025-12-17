@@ -1,0 +1,23 @@
+---
+layout: default
+---
+
+<article class="course">
+  {{ content }}
+
+  <h2>Chapters</h2>
+  {% assign course_id = page.course_id %}
+  {% assign chapters = site.pages | where_exp: "page", "page.course_id == course_id" | where_exp: "page", "page.chapter_number != nil" | sort: "chapter_number" %}
+
+  {% if chapters.size > 0 %}
+    <ul>
+      {% for chapter in chapters %}
+        <li>
+          <a href="{{ chapter.url }}">{{ chapter.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No chapters available yet.</p>
+  {% endif %}
+</article>
