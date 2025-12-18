@@ -5,22 +5,27 @@
   </div>
 
   <div class="sidebar-content">
-    <h3>Courses</h3>
+    {% if page.course_id %}
+      <!-- We're in a course, show only this course's chapters -->
+      {% assign course_dirs = site.pages | where_exp: "page", "page.path contains 'courses/'" | where_exp: "page", "page.name == 'index.md'" %}
+      {% assign current_course = course_dirs | where: "course_id", page.course_id | first %}
 
-    {% assign course_dirs = site.pages | where_exp: "page", "page.path contains 'courses/'" | where_exp: "page", "page.name == 'index.md'" | sort: "title" %}
+      <div class="breadcrumb">
+        <a href="{{ site.baseurl }}/">← All Courses</a>
+      </div>
 
-    {% for course_page in course_dirs %}
-      <div class="course-section">
-        <h4><a href="{{ site.baseurl }}{{ course_page.url }}">{{ course_page.title }}</a></h4>
+      <div class="course-section active-course">
+        <h3>{{ current_course.title }}</h3>
+        <p class="course-description">{{ current_course.description }}</p>
 
-        {% assign course_id = course_page.course_id %}
-        {% assign chapters = site.pages | where_exp: "page", "page.course_id == course_id" | where_exp: "page", "page.chapter_number != nil" | sort: "chapter_number" %}
+        {% assign chapters = site.pages | where: "course_id", page.course_id | where_exp: "page", "page.chapter_number != nil" | sort: "chapter_number" %}
 
         {% if chapters.size > 0 %}
           <ul class="chapter-list">
             {% for chapter in chapters %}
               <li>
                 <a href="{{ site.baseurl }}{{ chapter.url }}" {% if page.url == chapter.url %}class="active"{% endif %}>
+                  <span class="chapter-number">{{ chapter.chapter_number }}.</span>
                   {{ chapter.title }}
                 </a>
               </li>
@@ -28,6 +33,22 @@
           </ul>
         {% endif %}
       </div>
-    {% endfor %}
+    {% else %}
+      <!-- We're on home page, show all courses -->
+      <h3>All Courses</h3>
+
+      {% assign course_dirs = site.pages | where_exp: "page", "page.path contains 'courses/'" | where_exp: "page", "page.name == 'index.md'" | sort: "title" %}
+
+      {% for course_page in course_dirs %}
+        <div class="course-section">
+          <h4><a href="{{ site.baseurl }}{{ course_page.url }}">{{ course_page.title }}</a></h4>
+          <p class="course-summary">{{ course_page.description }}</p>
+
+          {% assign course_id = course_page.course_id %}
+          {% assign chapters = site.pages | where_exp: "page", "page.course_id == course_id" | where_exp: "page", "page.chapter_number != nil" | sort: "chapter_number" %}
+          <p class="chapter-count">{{ chapters.size }} chapters</p>
+        </div>
+      {% endfor %}
+    {% endif %}
   </div>
 </nav>
