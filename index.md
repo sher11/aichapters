@@ -3,9 +3,9 @@ layout: default
 title: Home
 ---
 
-# Welcome to AIChapters
+# Staff-Level FAANG Interview Prep
 
-Learn Artificial Intelligence and Machine Learning through structured, chapter-based courses.
+Master data structures, algorithms, system design, and coding patterns for L6/E6 technical interviews at top tech companies.
 
 ## Available Courses
 
@@ -21,9 +21,18 @@ Learn Artificial Intelligence and Machine Learning through structured, chapter-b
   {% endfor %}
 </div>
 
-## How It Works
+## Format
+
+- **Cheatsheet-style:** Short, crisp chapters for quick revision
+- **High-frequency:** Focus on commonly asked patterns and problems
+- **Trade-offs:** Discuss when to use one approach vs another
+- **Q&A sections:** Test your understanding with focused questions
+- **Staff-level:** L6/E6 depth with system design considerations
+
+## How to Use
 
 1. Choose a course from the list above
 2. Navigate through chapters using the sidebar
-3. Use the previous/next buttons at the bottom of each chapter
-4. Learn at your own pace!
+3. Review main concepts, then test with Q&A chapters
+4. Focus on trade-offs and real-world applications
+5. Revise frequently using the cheatsheet format
