@@ -3,9 +3,10 @@
 ## Format & Structure
 - Keep chapters short, crisp, and cheatsheet-style for quick revision
 - Use bullet points, tables, and diagrams over lengthy paragraphs
+- Include Mermaid diagrams for visualizing flows, architectures, relationships, and algorithms
 - Include a "Key Takeaways" section at the end of each chapter
 - Add time/space complexity for all algorithms and data structures
-- Focus on key concepts which are discussed in interviews
+- Focus on key concepts which are discussed in interviews               
 
 ## Content Depth
 - Target staff-level (L6/E6) interview expectations at FAANG companies
